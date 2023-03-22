@@ -30,15 +30,16 @@ if __name__ == "__main__":
     n_1 = 1.
     
         
-    fig, ax1 = plt.subplots(1)
+    fig, ax1 = plt.subplots(1, figsize=(3.6, 2.25))
     ax1.set_xscale('log')
     ax1.set_yscale('log')
     ax1.set_ylabel(r'Tree number density - trees (kg C)$^{-1}$ ha$^{-1}$')
-    ax1.set_xlabel(r'Tree Mass $m_s$ - kg C')
+    ax1.set_xlabel(r'Tree Mass $m$ - kg C')
     for i, mu_1 in enumerate(mu_1_array):
         n_array = nDist(m_array, n_1, mu_1)
         ax1.plot(m_array, n_array, '-', color=colors[i], label=str(mu_1))
     ax1.legend(title=r'$\mu_1$')
+    plt.tight_layout()
     plt.savefig('mu_1_effect.pdf')
     plt.close()    
     
