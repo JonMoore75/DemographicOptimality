@@ -4,7 +4,7 @@ Created on Sun Feb 26 15:45:32 2023
 
 @author: jonrm
 """
-
+from copy import deepcopy
 import numpy as np
 
 import matplotlib.pyplot as plt
@@ -29,8 +29,11 @@ if __name__ == "__main__":
     
     n_1 = 1.
     
+    fSize = deepcopy(plt.rcParams.get('figure.figsize'))
+    fSize = [i * 0.75 for i in fSize]
+    
         
-    fig, ax1 = plt.subplots(1, figsize=(3.6, 2.25))
+    fig, ax1 = plt.subplots(1, figsize=fSize)#(3.6, 2.25))
     ax1.set_xscale('log')
     ax1.set_yscale('log')
     ax1.set_ylabel(r'Tree number density - trees (kg C)$^{-1}$ ha$^{-1}$')
