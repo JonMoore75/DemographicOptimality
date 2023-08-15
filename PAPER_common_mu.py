@@ -53,6 +53,10 @@ if __name__ == "__main__":
 
     mpl.rcParams['figure.dpi'] = 200
     
+    # Paul Tol colours https://personal.sron.nl/~pault/
+    colors= ['#004488', '#DDAA33', '#BB5566']
+    colors2 = ['#004488', '#6699cc', '#994455', '#EE99AA']
+    
     #plt.style.use(thisfilepath+'/MatPlotLibStyles/StevePlot.mplstyle')
     #plt.style.use(thisfilepath+'/MatPlotLibStyles/custom.mplstyle')
     #plt.style.use(thisfilepath+'/MatPlotLibStyles/Nature.mplstyle')
@@ -68,8 +72,11 @@ if __name__ == "__main__":
     # color is the line color
     # label is the label for the legend
     
-    lines[2].color = 'g'
-    lines[3].color = 'm'
+    for i in range(4):
+        lines[i].color = colors2[i]
+
+    # lines[2].color = 'g'
+    # lines[3].color = 'm'
         
     fig, ax = plt.subplots(1)  
 
