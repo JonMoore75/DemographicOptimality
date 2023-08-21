@@ -115,7 +115,7 @@ def OptN_alpha_mu_1(mu_ps, a1, mu_1, phi_g=0.75, phi_a=0.5, mu_seed=0.0, f_rs=1.
     return np.nan
 
 def OptM_alpha_mu_p1(m_s, a_s, mu_p1, phi_g=0.75, phi_a=0.5, m_r=None, f_rs=1.0, mu_seed=0.0):
-    """ Finds alpha that optimises Biomass for constant mu_p1"""
+    """ Finds alpha that optimises Biomass for constant mu_p1, m_s and a_s"""
     c = 1 - phi_g
     
     if m_r is None:
@@ -142,7 +142,7 @@ def OptM_alpha_mu_p1(m_s, a_s, mu_p1, phi_g=0.75, phi_a=0.5, m_r=None, f_rs=1.0,
     return np.nan 
 
 def OptM_alpha_mu_p1_2(mu_s, mu_p1, a1, phi_g=0.75, phi_a=0.5, m_r=None, f_rs=1.0, mu_seed=0.0):
-    """ Finds alpha that optimises Biomass for constant mu_p1"""
+    """ Finds alpha that optimises Biomass for constant mu_p1, mu_s and a1"""
     x = 1./(1 - phi_g)
     
     def FitFunc(alpha):
