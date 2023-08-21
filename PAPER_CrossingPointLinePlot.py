@@ -182,7 +182,7 @@ if __name__ == "__main__":
     ###############################
     # Plots
     
-    xlabel = r'Seed Mass $m_s$'
+    xlabel = r'Seed Mass $m_s$ - kg C'
     lab_pos = (0.1, 0.9)
     
     panels = []
@@ -208,11 +208,11 @@ if __name__ == "__main__":
     
     ###############################
     
-    spacings = {'hspace':0.25, 'wspace': 0.35, 'left':0.08, 'right': 0.995,
+    spacings = {'hspace':0.05, 'wspace': 0.35, 'left':0.08, 'right': 0.995,
               'top': 0.99}
     
     filename = 'DO_results'
-    MultiPanelPlot(panels, 3, spacings=spacings, fileN=filename, allowExpand=False)
+    MultiPanelPlot(panels, 3, spacings=spacings, fileN=filename, allowExpand=False,commonXAxisLabels=True)
 
     
     ###############################

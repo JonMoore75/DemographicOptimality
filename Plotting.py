@@ -208,7 +208,8 @@ def PlotPanel(ax, pD, commonLegend=False, verbose=False):
     
 def MultiPanelPlot(plotList, NumPanelCol, fileN=None, commonLegend = False,
                    commonXScale=False, commonAxisLabels = False, 
-                   allowExpand = True, spacings=None):
+                   allowExpand = True, spacings=None, commonXAxisLabels = False,
+                   commonYAxisLabels = False):
     """ Plots multipanel plot
         plotList is expected to be list of PlotData items """
     NumPanels = len(plotList)
@@ -254,7 +255,19 @@ def MultiPanelPlot(plotList, NumPanelCol, fileN=None, commonLegend = False,
                     pD.axSet.ytickOn = False
                 if i < NumPanelRow-1:
                     pD.axSet.xtickOn = False
-                    
+            elif commonYAxisLabels:
+                # Switch off individual subplots y-axis labels if shared across 
+                # figure.
+                pD.axSet.ylabelOn = False
+                if j > 0: 
+                    pD.axSet.ytickOn = False
+            elif commonXAxisLabels:
+                # Switch off individual subplots x-axis labels if shared across 
+                # figure.
+                pD.axSet.xlabelOn = False
+                if i < NumPanelRow-1:
+                    pD.axSet.xtickOn = False
+
             if pD.ylim is not None:
                 ax.set_ylim(pD.ylim)
             if pD.xlim is not None:
@@ -284,6 +297,16 @@ def MultiPanelPlot(plotList, NumPanelCol, fileN=None, commonLegend = False,
                   fontsize=1.4*plt.rcParams.get('ytick.labelsize'))
         fig.text(0.5, 0.05, pD.axSet.xlabel, ha="center", 
                   fontsize=1.4*plt.rcParams.get('xtick.labelsize'))
+        
+    elif commonYAxisLabels:
+        pD = plotList[0]
+        fig.text(0.025, 0.5, pD.axSet.ylabel, rotation="vertical", va="center", 
+                  fontsize=1.4*plt.rcParams.get('ytick.labelsize'))
+    elif commonXAxisLabels:
+        pD = plotList[0]
+        fig.text(0.5, 0.025, pD.axSet.xlabel, ha='center', 
+                  fontsize=1.4*plt.rcParams.get('xtick.labelsize'))
+
     PlotorShow_PDFPNG(fileN)
     
 def PlotorShow_PDFPNG(fileN, plotpath=''):
